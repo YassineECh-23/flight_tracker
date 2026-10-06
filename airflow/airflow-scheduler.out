@@ -1,0 +1,13 @@
+[2m2026-10-06T01:32:35.746659Z[0m [[32m[1minfo     [0m] [1mLoaded executor: :LocalExecutor:[0m [[0m[1m[34mairflow.executors.executor_loader[0m][0m [36mloc[0m=[35mexecutor_loader.py:376[0m
+2026-10-06T01:32:37.407584Z [warning  ] FileType is deprecated. Simply open files after parsing arguments. [py.warnings] category=PendingDeprecationWarning filename=/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/airflow/cli/cli_config.py lineno=646
+2026-10-06T01:32:37.408918Z [warning  ] FileType is deprecated. Simply open files after parsing arguments. [py.warnings] category=PendingDeprecationWarning filename=/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/airflow/cli/cli_config.py lineno=868
+2026-10-06T01:32:37.640849Z [info     ] Starting log server on http://[::]:8793 [airflow.utils.serve_logs.core] loc=core.py:50
+2026-10-06T01:32:37.709248Z [warning  ] ASGI app factory detected. Using it, but please consider setting the --factory flag explicitly. [uvicorn.error] loc=config.py:521
+2026-10-06T01:32:37.710016Z [info     ] Started server process [5391]  [uvicorn.error] loc=server.py:103
+2026-10-06T01:32:37.710157Z [info     ] Waiting for application startup. [uvicorn.error] loc=on.py:48
+2026-10-06T01:32:37.710597Z [info     ] Application startup complete.  [uvicorn.error] loc=on.py:62
+2026-10-06T01:32:37.711763Z [info     ] Uvicorn running on http://:8793 (Press CTRL+C to quit) [uvicorn.error] loc=server.py:234
+2026-10-06T01:32:47.538280Z [info     ] Shutting down                  [uvicorn.error] loc=server.py:282
+2026-10-06T01:32:47.639214Z [info     ] Waiting for application shutdown. [uvicorn.error] loc=on.py:67
+2026-10-06T01:32:47.639491Z [info     ] Application shutdown complete. [uvicorn.error] loc=on.py:76
+2026-10-06T01:32:47.639620Z [info     ] Finished server process [5391] [uvicorn.error] loc=server.py:113

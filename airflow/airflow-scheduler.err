@@ -1,0 +1,234 @@
+Traceback (most recent call last):
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 149, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 3284, in raw_connection
+    return self.pool.connect()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 445, in connect
+    return _ConnectionFairy._checkout(self)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 1303, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 709, in checkout
+    rec = pool._do_get()
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/sqlalchemy/pool/impl.py", line 176, in _do_get
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/sqlalchemy/util/langhelpers.py", line 166, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/sqlalchemy/pool/impl.py", line 174, in _do_get
+    return self._create_connection()
+           ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 386, in _create_connection
+    return _ConnectionRecord(self)
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 671, in __init__
+    self.__connect()
+    ~~~~~~~~~~~~~~^^
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 929, in __connect
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/sqlalchemy/util/langhelpers.py", line 166, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 921, in __connect
+    )._exec_w_sync_on_first_run(self.dbapi_connection, self)
+      ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/sqlalchemy/event/attr.py", line 500, in _exec_w_sync_on_first_run
+    self(*args, **kw)
+    ~~~~^^^^^^^^^^^^^
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/sqlalchemy/event/attr.py", line 514, in __call__
+    fn(*args, **kw)
+    ~~^^^^^^^^^^^^^
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/airflow/utils/orm_event_handlers.py", line 50, in set_sqlite_pragma
+    cursor.execute("PRAGMA journal_mode=WAL")
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: locking protocol
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/yassine/flight_tracker/venv/bin/airflow", line 8, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/airflow/__main__.py", line 61, in main
+    args.func(args)
+    ~~~~~~~~~^^^^^^
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/airflow/utils/cli.py", line 113, in wrapper
+    return f(*args, **kwargs)
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/airflow/utils/providers_configuration_loader.py", line 54, in wrapped_function
+    return func(*args, **kwargs)
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/airflow/cli/commands/scheduler_command.py", line 68, in scheduler
+    run_command_with_daemon_option(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        args=args,
+        ^^^^^^^^^^
+    ...<2 lines>...
+        should_setup_logging=True,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/airflow/cli/commands/daemon_utils.py", line 77, in run_command_with_daemon_option
+    callback()
+    ~~~~~~~~^^
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/airflow/cli/commands/scheduler_command.py", line 71, in <lambda>
+    callback=lambda: _run_scheduler_job(args),
+                     ~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/airflow/utils/memray_utils.py", line 61, in wrapper
+    return func(*args, **kwargs)
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/airflow/cli/commands/scheduler_command.py", line 50, in _run_scheduler_job
+    run_job(job=job_runner.job, execute_callable=job_runner._execute)
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/airflow/utils/session.py", line 100, in wrapper
+    return func(*args, session=session, **kwargs)  # type: ignore[arg-type]
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/airflow/jobs/job.py", line 351, in run_job
+    job.prepare_for_execution(session=session)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/airflow/utils/session.py", line 98, in wrapper
+    return func(*args, **kwargs)
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/airflow/jobs/job.py", line 273, in prepare_for_execution
+    session.commit()
+    ~~~~~~~~~~~~~~^^
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 2095, in commit
+    trans.commit(_to_root=True)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "<sqlalchemy generated _go() wrapper for sqlalchemy.orm.session.SessionTransaction.commit>", line 2, in commit
+    return target(fn, self, _to_root=_to_root)
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 1330, in commit
+    self._prepare_impl()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "<sqlalchemy generated _go() wrapper for sqlalchemy.orm.session.SessionTransaction._prepare_impl>", line 2, in _prepare_impl
+    return target(fn, self)
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 1304, in _prepare_impl
+    self.session.flush()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 4536, in flush
+    self._flush(objects)
+    ~~~~~~~~~~~^^^^^^^^^
+  File "<sqlalchemy generated warned() wrapper for sqlalchemy.orm.session.Session._flush>", line 2, in _flush
+    return target(fn, self, objects=objects)
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/sqlalchemy/util/deprecations.py", line 281, in warned
+    return fn(*args, **kwargs)  # type: ignore[no-any-return]
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 4679, in _flush
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/sqlalchemy/util/langhelpers.py", line 166, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 4640, in _flush
+    flush_context.execute()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/sqlalchemy/orm/unitofwork.py", line 467, in execute
+    rec.execute(self)
+    ~~~~~~~~~~~^^^^^^
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/sqlalchemy/orm/unitofwork.py", line 643, in execute
+    util.preloaded.orm_persistence._save_obj(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self.mapper,
+        ^^^^^^^^^^^^
+        uow.states_for_mapper_hierarchy(self.mapper, False, False),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        uow,
+        ^^^^
+    )
+    ^
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/sqlalchemy/orm/persistence.py", line 67, in _save_obj
+    ) in _organize_states_for_save(base_mapper, states, uowtransaction):
+         ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/sqlalchemy/orm/persistence.py", line 222, in _organize_states_for_save
+    for state, dict_, mapper, connection in _connections_for_states(
+                                            ~~~~~~~~~~~~~~~~~~~~~~~^
+        base_mapper, uowtransaction, states
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/sqlalchemy/orm/persistence.py", line 1761, in _connections_for_states
+    connection = uowtransaction.transaction.connection(base_mapper)
+  File "<sqlalchemy generated _go() wrapper for sqlalchemy.orm.session.SessionTransaction.connection>", line 2, in connection
+    return target(fn, self, bindkey, execution_options=execution_options, **kwargs)
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 1053, in connection
+    return self._connection_for_bind(bind, execution_options)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<sqlalchemy generated _go() wrapper for sqlalchemy.orm.session.SessionTransaction._connection_for_bind>", line 2, in _connection_for_bind
+    return target(fn, self, bind, execution_options)
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 1189, in _connection_for_bind
+    conn = self._parent._connection_for_bind(
+        bind, execution_options
+    )
+  File "<sqlalchemy generated _go() wrapper for sqlalchemy.orm.session.SessionTransaction._connection_for_bind>", line 2, in _connection_for_bind
+    return target(fn, self, bind, execution_options)
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 1203, in _connection_for_bind
+    conn = bind.connect()
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 3260, in connect
+    return self._connection_cls(self)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 151, in __init__
+    Connection._handle_dbapi_exception_noconnection(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        err, dialect, engine
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 2417, in _handle_dbapi_exception_noconnection
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 149, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 3284, in raw_connection
+    return self.pool.connect()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 445, in connect
+    return _ConnectionFairy._checkout(self)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 1303, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 709, in checkout
+    rec = pool._do_get()
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/sqlalchemy/pool/impl.py", line 176, in _do_get
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/sqlalchemy/util/langhelpers.py", line 166, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/sqlalchemy/pool/impl.py", line 174, in _do_get
+    return self._create_connection()
+           ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 386, in _create_connection
+    return _ConnectionRecord(self)
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 671, in __init__
+    self.__connect()
+    ~~~~~~~~~~~~~~^^
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 929, in __connect
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/sqlalchemy/util/langhelpers.py", line 166, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/sqlalchemy/pool/base.py", line 921, in __connect
+    )._exec_w_sync_on_first_run(self.dbapi_connection, self)
+      ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/sqlalchemy/event/attr.py", line 500, in _exec_w_sync_on_first_run
+    self(*args, **kw)
+    ~~~~^^^^^^^^^^^^^
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/sqlalchemy/event/attr.py", line 514, in __call__
+    fn(*args, **kw)
+    ~~^^^^^^^^^^^^^
+  File "/home/yassine/flight_tracker/venv/lib/python3.14/site-packages/airflow/utils/orm_event_handlers.py", line 50, in set_sqlite_pragma
+    cursor.execute("PRAGMA journal_mode=WAL")
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) locking protocol
+(Background on this error at: https://sqlalche.me/e/21/e3q8)
+Exception ignored while calling deallocator <function ResourceTracker.__del__ at 0x706f8ac4eb90>:
+Traceback (most recent call last):
+  File "/usr/lib/python3.14/multiprocessing/resource_tracker.py", line 90, in __del__
+  File "/usr/lib/python3.14/multiprocessing/resource_tracker.py", line 99, in _stop
+  File "/usr/lib/python3.14/multiprocessing/resource_tracker.py", line 121, in _stop_locked
+OSError: [Errno 9] Bad file descriptor
